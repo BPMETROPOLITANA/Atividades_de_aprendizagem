@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="AD_PRATMOD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AD_PRATMOD_jar</output-path>
+    <root id="archive" name="AD_PRATMOD.jar">
+      <element id="module-output" name="incluirNota" />
+    </root>
+  </artifact>
+</component>
