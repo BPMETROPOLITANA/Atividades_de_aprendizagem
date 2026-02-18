@@ -6,10 +6,6 @@ Projeto desenvolvido como atividade de aprendizagem para o sistema Sankhya ERP, 
 
 - [Visão Geral](#visão-geral)
 - [Funcionalidades](#funcionalidades)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Componentes Principais](#componentes-principais)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Instalação](#instalação)
 
 ## 🎯 Visão Geral
 
@@ -85,7 +81,7 @@ Ação que atualiza o campo HISTORICO dos registros financeiros relacionados às
 2. Inclui também notas relacionadas através da tabela TGFVAR (variações)
 3. Para cada nota encontrada:
    - Busca os registros financeiros relacionados
-   - Obtém o código do usuário que incluiu a nota (CODUSUINC)
+   - Obtém o código do usuário que incluiu a nota na TGFCAB (CODUSUINC)
    - Busca o nome do usuário
    - Atualiza o campo HISTORICO com a mensagem:
      ```
