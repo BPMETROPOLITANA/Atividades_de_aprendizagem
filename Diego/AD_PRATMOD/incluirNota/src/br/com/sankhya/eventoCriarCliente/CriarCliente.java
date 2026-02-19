@@ -22,6 +22,7 @@ public class CriarCliente implements EventoProgramavelJava {
 
             setCriadorNotaVO(pe);
             setCNPJCPFformatado();
+            verificaCGC_CPF();
             setParceiroVO();
 
             if (!verificaSeParceiroExiste()){
@@ -30,6 +31,16 @@ public class CriarCliente implements EventoProgramavelJava {
 
         } catch(Exception e) {
             throw new Exception(e.getMessage());
+        }
+    }
+
+    private void verificaCGC_CPF() throws Exception {
+        try {
+            if (this.CNPJCPF.length() != 11 && this.CNPJCPF.length() != 14) {
+                throw new Exception("CNPJ / CPF de tamanho inválido");
+            };
+        }catch (Exception e) {
+            throw new Exception("Erro ao validar CPF / CNPJ: "+e);
         }
     }
 

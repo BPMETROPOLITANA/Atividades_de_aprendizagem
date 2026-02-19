@@ -53,6 +53,7 @@ public class IncluirNota implements AcaoRotinaJava {
                 return;
             }
 
+            validaDadosItens();
             criaModeloNotas();
             criaNotas();
             insereUsuarioFaturamentoEDataCriacaoNota(contextoAcao);
@@ -62,6 +63,21 @@ public class IncluirNota implements AcaoRotinaJava {
                 deletaCabecalhoNota(this.cabecalhoNotaCriadaVO.asBigDecimal("NUNOTA"));
             }
             throw new Exception("ERRO AO CRIAR A NOTA: "+e);
+        }
+    }
+
+    private void validaDadosItens() throws Exception {
+        try {
+            for(DynamicVO vo: this.dadosNotasVOs){
+                if (vo.asBigDecimal("VLRUNIT").compareTo(BigDecimal.ZERO) < 0){
+                    throw new Exception("Valor unitário não pode ser negativo." + vo.toString());
+                }
+                if (vo.asBigDecimal("QTDNEG").compareTo(BigDecimal.ZERO) <= 0){
+                    throw new Exception("Quantidade negociada deve ser maior que 0" + vo.toString());
+                }
+            }
+        } catch (Exception e){
+            throw new Exception("Erro ao validar dados da nota: "+e);
         }
     }
 
@@ -181,7 +197,7 @@ public class IncluirNota implements AcaoRotinaJava {
 
     private boolean notaJaCriada() {
         for (DynamicVO criadorNotaVO: this.dadosNotasVOs){
-            if(criadorNotaVO.asString("NUNOTA")!= null && !criadorNotaVO.asString("STATUSFATUR").equals("Em faturamento")){
+            if(criadorNotaVO.asBigDecimal("NUNOTA")!= null && !criadorNotaVO.asString("STATUSFATUR").equals("Em faturamento")){
                 return true;
             }
         }
