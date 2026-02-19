@@ -28,6 +28,7 @@ Ação que cria notas fiscais automaticamente a partir de registros na tabela cu
 #### Funcionamento
 - Busca todos os registros selecionados na tabela `AD_PRATMOD`
 - Valida se já existe nota criada para os itens selecionados
+- Valida se o valor unitário não é negativo e se quantidade é maior que 0
 - Agrupa itens por cabeçalho de nota (baseado em: data de negociação, cliente, tipo de negociação, natureza, centro de custo, tipo de operação e empresa)
 - Para cada grupo:
   - Cria o cabeçalho da nota fiscal (CabecalhoNota)
@@ -51,7 +52,7 @@ Evento disparado antes da inserção de registros na tabela `AD_PRATMOD` que ver
 
 #### Funcionamento
 - **Trigger:** beforeInsert (antes de inserir registro)
-- Extrai e formata o CPF/CNPJ do campo CNPJCLI, removendo tudo que não é número
+- Extrai e formata o CPF/CNPJ do campo CNPJCLI, removendo tudo que não é número e verifica a validade pelo tamanho 11 = CPF e 14 = CNPJ
 - Busca se já existe um parceiro com aquele CPF/CNPJ
 - Se o parceiro NÃO existir:
   - Busca um parceiro padrão (CPF: 00000000000) para usar como template
