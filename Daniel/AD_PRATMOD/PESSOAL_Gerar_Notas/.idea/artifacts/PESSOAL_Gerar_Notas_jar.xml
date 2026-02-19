@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PESSOAL_Gerar_Notas:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PESSOAL_Gerar_Notas_jar</output-path>
+    <root id="archive" name="PESSOAL_Gerar_Notas.jar">
+      <element id="module-output" name="PESSOAL_Gerar_Notas" />
+    </root>
+  </artifact>
+</component>
